@@ -37,7 +37,11 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'Deployment step (optional)'
+                dir('my-java-app/target') {
+                    // Assuming your artifact is my-java-app.jar; change if needed
+                    sh 'cp my-java-app.jar /home/gopalraj321/'
+                }
+                echo 'Artifact copied to /home/gopalraj321/'
             }
         }
     }
