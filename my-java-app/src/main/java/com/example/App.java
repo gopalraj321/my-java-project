@@ -27,6 +27,7 @@ public class App {
         server.join();
     }
 
+    // 🔥 Required for your test case
     public static String greet() {
         return "Hello from greet() method!";
     }
