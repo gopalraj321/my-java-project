@@ -39,7 +39,7 @@ pipeline {
             steps {
                 dir('my-java-app/target') {
                     // Assuming your artifact is my-java-app.jar; change if needed
-                    sh 'cp my-java-app-1.0.0.jar /home/gopalraj321/'
+                    sh 'cp my-java-app-1.0.0.jar /home'
                 }
                 echo 'Artifact copied to /home/gopalraj321/'
             }
