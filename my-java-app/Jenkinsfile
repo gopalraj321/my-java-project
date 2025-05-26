@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'Maven 3'
+        jdk 'JDK 11'
+    }
+
+    environment {
+        SONARQUBE = 'MySonar'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/<your-username>/<your-repo>.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('MySonar') {
+                    sh 'mvn sonar:sonar'
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deployment step (optional)'
+            }
+        }
+    }
+}
