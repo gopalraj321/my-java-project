@@ -8,7 +8,7 @@ import org.eclipse.jetty.servlet.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Server server = new Server(8080);
+        Server server = new Server(9090);
 
         ServletContextHandler handler = new ServletContextHandler();
         handler.setContextPath("/");
