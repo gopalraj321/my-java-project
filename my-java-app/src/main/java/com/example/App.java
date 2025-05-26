@@ -14,11 +14,23 @@ public class App {
         handler.setContextPath("/");
 
         handler.addServlet(new ServletHolder(new HttpServlet() {
-            protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-                    throws ServletException, IOException {
+            @Override
+            protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
                 resp.setContentType("text/html");
                 resp.setStatus(HttpServletResponse.SC_OK);
-                resp.getWriter().println("<h1>" + greet() + "</h1>");
+                try {
+                    resp.getWriter().println("<h1>" + greet() + "</h1>");
+                } catch (IOException e) {
+                    // Handle IOException here: log error and set HTTP 500 status
+                    e.printStackTrace();
+                    resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                    try {
+                        resp.getWriter().println("<h1>Internal Server Error</h1>");
+                    } catch (IOException ex) {
+                        // If writing error message fails, just ignore or log
+                        ex.printStackTrace();
+                    }
+                }
             }
         }), "/*");
 
@@ -29,6 +41,6 @@ public class App {
 
     // 🔥 Required for your test case
     public static String greet() {
-        return "Hello from greet() method!";
+        return "Hello! MR GOpalraj wellcome to our World";
     }
 }
