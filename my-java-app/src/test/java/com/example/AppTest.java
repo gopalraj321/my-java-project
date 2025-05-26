@@ -7,6 +7,6 @@ class AppTest {
 
     @Test
     void testGreet() {
-        assertEquals("Hello from greet() method!", App.greet());
+        assertEquals("Hello! MR GOpalraj wellcome to our World", App.greet());
     }
 }
