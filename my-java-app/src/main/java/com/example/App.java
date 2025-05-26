@@ -18,12 +18,16 @@ public class App {
                     throws ServletException, IOException {
                 resp.setContentType("text/html");
                 resp.setStatus(HttpServletResponse.SC_OK);
-                resp.getWriter().println("<h1>Hello from My Java Web App!</h1>");
+                resp.getWriter().println("<h1>" + greet() + "</h1>");
             }
         }), "/*");
 
         server.setHandler(handler);
         server.start();
         server.join();
+    }
+
+    public static String greet() {
+        return "Hello from greet() method!";
     }
 }
