@@ -36,11 +36,11 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-                dir('my-java-app/target') {
-                    bat 'copy my-java-app-1.0.0.jar C:\\Users\\Gopal\\Desktop\\Gopal Cloud Documents'
-                }
-                echo 'Artifact copied to C:\\Users\\Gopal\\Desktop\\Gopal Cloud Documents'
+    steps {
+        dir('my-java-app/target') {
+            bat 'copy my-java-app-1.0.0.jar "C:\\Users\\Gopal\\Desktop\\Gopal Cloud Documents"'
+        }
+        echo 'Artifact copied to C:\\Users\\Gopal\\Desktop\\Gopal Cloud Documents'
             }
         }
     }
