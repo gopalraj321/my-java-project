@@ -1,9 +1,10 @@
-# Use Maven to build and run the app
-FROM maven:3.8.5-openjdk-17 AS build
-WORKDIR /app
-COPY . .
-RUN mvn clean package
+# Use a minimal Java image
+FROM openjdk:17-jdk-slim
 
-FROM openjdk:17
-COPY --from=build /app/target/java-cicd-demo-1.0-SNAPSHOT.jar /app/app.jar
-CMD ["java", "-jar", "/app/app.jar"]
+# Set working directory
+WORKDIR /app
+
+# Copy only the final jar (already built by Jenkins)
+COPY target/*.jar app.jar
+# Start the app
+ENTRYPOINT ["java", "-jar", "app.jar"]
